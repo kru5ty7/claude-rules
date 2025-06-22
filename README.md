@@ -42,7 +42,6 @@ cd your-project/.cursor/rules/
 │       ├── airflow.mdc                    # Apache Airflow patterns
 │       ├── task-management.mdc            # Task management methodology
 │       └── ...                            # Additional specialized rules
-├── CLAUDE.md                # Claude Code instructions
 ├── rules_sample.md          # Complete rule template examples
 ├── cursor-rules-meta-guide.md # Rule creation methodology
 └── README.md               # This file
