@@ -1,0 +1,197 @@
+---
+description: Guidelines for creating custom Claude commands with proper structure and functionality
+globs: 
+  - "create-command.md"
+  - ".claude/commands/*.md"
+  - "**/commands/*.md"
+alwaysApply: false
+tags: ["commands", "development", "tooling"]
+---
+
+# Create Command Standards
+
+## Overview
+This rule governs the creation of custom Claude commands, ensuring consistency, usability, and maintainability across all command definitions.
+
+## Core Principles
+- **Single Responsibility**: Each command should have one clear purpose
+- **User-Centric Design**: Commands should solve real user problems
+- **Predictable Interface**: Consistent parameter patterns and output formats
+- **Self-Documenting**: Commands should be self-explanatory through clear naming and documentation
+
+## Command Development Process
+
+### 1. Purpose Definition
+**MUST DO**:
+- Define the specific problem the command solves
+- Identify the target user and use cases
+- Specify expected inputs and outputs
+- Determine success criteria
+
+**Questions to Answer**:
+- What manual process does this command automate?
+- How will users discover and invoke this command?
+- What are the common failure scenarios?
+
+### 2. Category Classification
+Choose the appropriate command type:
+
+```markdown
+- **Planning**: /plan-architecture, /design-system
+- **Implementation**: /create-component, /implement-feature  
+- **Analysis**: /analyze-performance, /review-security
+- **Testing**: /generate-tests, /validate-coverage
+- **Documentation**: /create-docs, /update-readme
+- **Workflow**: /setup-project, /deploy-staging
+- **Utility**: /format-code, /optimize-images
+```
+
+### 3. Command Structure Template
+
+```markdown
+# Command Name
+
+Brief description of what this command accomplishes.
+
+## Usage
+`/command-name [required-param] [optional-param?]`
+
+### Parameters
+- `required-param`: Description of required parameter
+- `optional-param?`: Description of optional parameter (default: value)
+
+## Process
+1. **Validation**: Check inputs and prerequisites
+2. **Preparation**: Set up necessary context and resources
+3. **Execution**: Perform the main command logic
+4. **Output**: Generate results and feedback
+5. **Cleanup**: Handle any necessary cleanup
+
+## Examples
+
+### Basic Usage
+```
+/command-name basic-input
+```
+Expected output: Description of what happens
+
+### Advanced Usage
+```
+/command-name complex-input --option=value
+```
+Expected output: Description of advanced scenario
+
+## Output Format
+- Success: Clear confirmation and results
+- Errors: Specific error messages with resolution steps
+- Progress: Status updates for long-running operations
+
+## Error Handling
+- **Invalid Input**: Specific validation error messages
+- **Missing Dependencies**: Clear setup instructions
+- **Operation Failures**: Actionable recovery steps
+- **Partial Success**: Status of completed vs failed operations
+
+## Notes
+- Prerequisites and dependencies
+- Performance considerations
+- Limitations and constraints
+- Related commands
+```
+
+## Implementation Guidelines
+
+### Parameter Design
+**MUST DO**:
+- Use descriptive parameter names
+- Provide sensible defaults
+- Validate all inputs before processing
+- Support both positional and named arguments
+
+```markdown
+# Good parameter patterns
+/create-component Button --type=functional --tests=true
+/analyze-code src/ --depth=2 --format=json
+
+# Avoid unclear parameters  
+/cmd a b c --x=1
+```
+
+### Error Messages
+**SHOULD DO**:
+- Provide specific error descriptions
+- Include suggested fixes
+- Reference documentation when applicable
+- Use consistent error format
+
+```markdown
+# Good error message
+Error: Component name 'button' must be PascalCase
+Suggestion: Try 'Button' instead
+Reference: See /help create-component for naming conventions
+
+# Avoid vague errors
+Error: Invalid input
+```
+
+### Output Consistency
+**MUST DO**:
+- Use consistent formatting across commands
+- Include operation status (success/failure/partial)
+- Provide actionable next steps
+- Format output for both human and programmatic consumption
+
+## Command Organization
+
+### File Location
+```
+.claude/
+├── commands/
+│   ├── planning/
+│   │   ├── plan-architecture.md
+│   │   └── design-system.md
+│   ├── implementation/
+│   │   ├── create-component.md
+│   │   └── implement-feature.md
+│   └── analysis/
+│       ├── analyze-performance.md
+│       └── review-security.md
+```
+
+### Naming Conventions
+- Use kebab-case for command names
+- Start with action verb (create, analyze, generate, etc.)
+- Include subject noun (component, docs, tests, etc.)
+- Avoid abbreviations unless widely understood
+
+### Documentation Requirements
+**MUST INCLUDE**:
+- Clear usage examples
+- Parameter descriptions
+- Expected output format
+- Error scenarios and handling
+- Prerequisites and dependencies
+
+## Testing Commands
+Before finalizing any command:
+
+1. **Functionality Test**: Verify command works as specified
+2. **Edge Case Test**: Test boundary conditions and error scenarios  
+3. **User Experience Test**: Confirm command is intuitive to use
+4. **Documentation Test**: Ensure examples work as documented
+5. **Integration Test**: Verify command works with related commands
+
+## Quality Checklist
+- [ ] Command has single, clear purpose
+- [ ] Usage section includes all parameters
+- [ ] Examples demonstrate common use cases
+- [ ] Error handling covers failure scenarios
+- [ ] Output format is consistent with other commands
+- [ ] Prerequisites are clearly documented
+- [ ] Command follows established naming conventions
+- [ ] Help text is comprehensive and accurate
+
+## References
+@file .claude/commands/example-command.md
+@rule documentation-standards
+@rule user-experience-patterns

@@ -1,0 +1,380 @@
+---
+description: Standards for comprehensive code analysis with multiple inspection options and systematic evaluation
+globs: 
+  - "code-analysis.md"
+  - "src/**/*.{js,ts,py,java,go,rs}"
+  - "**/*.{js,ts,py,java,go,rs}"
+alwaysApply: false
+tags: ["analysis", "quality", "security", "performance"]
+---
+
+# Code Analysis Standards
+
+## Overview
+This rule establishes comprehensive standards for code analysis, providing systematic approaches to evaluate code quality, security, performance, and architectural integrity across different dimensions and scales.
+
+## Core Principles
+- **Multi-Dimensional Analysis**: Evaluate code from multiple perspectives
+- **Actionable Insights**: Every analysis must produce implementable recommendations
+- **Risk-Based Prioritization**: Focus on high-impact issues first
+- **Continuous Improvement**: Build analysis into development workflow
+
+## Analysis Framework
+
+### Analysis Type Selection
+Choose analysis approach based on objectives:
+
+```markdown
+**Strategic Analysis** (Architecture, Design Patterns)
+- System-wide architectural review
+- Design pattern compliance
+- Cross-cutting concern evaluation
+
+**Tactical Analysis** (Quality, Performance, Security)
+- Code quality metrics and maintainability
+- Performance bottleneck identification
+- Security vulnerability assessment
+
+**Operational Analysis** (Testing, Documentation, Deployment)
+- Test coverage and quality evaluation
+- Documentation completeness assessment
+- Deployment and monitoring readiness
+```
+
+## Analysis Categories
+
+### 1. Knowledge Graph Generation
+**PURPOSE**: Map relationships and dependencies
+**PROCESS**:
+```markdown
+1. **Component Mapping**
+   - Identify all modules, classes, and functions
+   - Map dependencies and call relationships
+   - Document data flow patterns
+   - Identify coupling points and interfaces
+
+2. **Relationship Analysis**
+   - Analyze dependency directions and cycles
+   - Evaluate coupling strength and types
+   - Map communication patterns
+   - Identify architectural boundaries
+
+3. **Pattern Recognition**
+   - Detect design pattern usage
+   - Identify architectural patterns
+   - Note anti-pattern occurrences
+   - Map reusable component patterns
+```
+
+**OUTPUT TEMPLATE**:
+```markdown
+## Component Relationship Map
+- **Core Components**: [List with responsibilities]
+- **Dependencies**: [Dependency graph description]
+- **Data Flow**: [How data moves through system]
+- **Integration Points**: [External system connections]
+
+## Architectural Patterns
+- **Identified Patterns**: [Design patterns in use]
+- **Pattern Compliance**: [How well patterns are implemented]
+- **Missing Patterns**: [Beneficial patterns not implemented]
+```
+
+### 2. Code Quality Evaluation
+**METRICS TO ANALYZE**:
+```markdown
+- **Complexity Metrics**
+  - Cyclomatic complexity per function/method
+  - Cognitive complexity assessment
+  - Nesting depth analysis
+  - Function/method length evaluation
+
+- **Maintainability Index**
+  - Code readability score
+  - Naming convention compliance
+  - Comment quality and coverage
+  - Code duplication percentage
+
+- **Technical Debt Assessment**
+  - TODO/FIXME comment analysis
+  - Code smell identification
+  - Refactoring opportunities
+  - Legacy code impact assessment
+```
+
+**QUALITY STANDARDS**:
+```markdown
+### Acceptable Thresholds
+- Cyclomatic complexity: ≤ 10 per function
+- Function length: ≤ 50 lines
+- Class length: ≤ 500 lines
+- Nesting depth: ≤ 4 levels
+- Code duplication: ≤ 5%
+
+### Quality Gates
+- **Green**: All metrics within acceptable range
+- **Yellow**: 1-2 metrics slightly above threshold
+- **Red**: Multiple metrics significantly above threshold
+```
+
+### 3. Performance Analysis
+**ANALYSIS AREAS**:
+```markdown
+1. **Algorithm Complexity**
+   - Time complexity analysis (Big O)
+   - Space complexity evaluation
+   - Algorithmic efficiency opportunities
+   - Data structure optimization potential
+
+2. **Resource Usage Patterns**
+   - Memory allocation patterns
+   - I/O operation efficiency
+   - CPU-intensive operation identification
+   - Resource leak detection
+
+3. **Scalability Assessment**
+   - Concurrent execution safety
+   - Load handling capabilities
+   - Resource contention points
+   - Bottleneck identification
+```
+
+**PERFORMANCE EVALUATION TEMPLATE**:
+```markdown
+## Performance Profile
+- **Critical Path**: [Most performance-sensitive code paths]
+- **Bottlenecks**: [Identified performance constraints]
+- **Resource Usage**: [Memory, CPU, I/O characteristics]
+- **Optimization Opportunities**: [Specific improvement suggestions]
+
+## Scalability Assessment
+- **Concurrency Safety**: [Thread safety evaluation]
+- **Load Characteristics**: [How system handles increased load]
+- **Resource Scaling**: [Resource usage scaling patterns]
+```
+
+### 4. Security Review
+**SECURITY DIMENSIONS**:
+```markdown
+1. **Input Validation**
+   - User input sanitization
+   - SQL injection prevention
+   - XSS vulnerability assessment
+   - Command injection protection
+
+2. **Authentication & Authorization**
+   - Authentication mechanism security
+   - Authorization logic correctness
+   - Session management security
+   - Privilege escalation prevention
+
+3. **Data Protection**
+   - Sensitive data handling
+   - Encryption usage and strength
+   - Data exposure risks
+   - PII handling compliance
+
+4. **Infrastructure Security**
+   - Configuration security
+   - Dependency vulnerability assessment
+   - Secret management evaluation
+   - Network security considerations
+```
+
+**SECURITY CHECKLIST**:
+```markdown
+- [ ] All user inputs validated and sanitized
+- [ ] SQL queries use parameterized statements
+- [ ] Authentication tokens properly secured
+- [ ] Sensitive data encrypted at rest and in transit
+- [ ] Error messages don't leak sensitive information
+- [ ] Dependencies regularly updated for security patches
+- [ ] Secrets not hardcoded in source code
+- [ ] HTTPS enforced for all communications
+```
+
+### 5. Architecture Review
+**EVALUATION CRITERIA**:
+```markdown
+1. **SOLID Principles Compliance**
+   - Single Responsibility Principle adherence
+   - Open/Closed Principle implementation
+   - Liskov Substitution Principle compliance
+   - Interface Segregation Principle usage
+   - Dependency Inversion Principle application
+
+2. **Coupling and Cohesion Analysis**
+   - Inter-module coupling strength
+   - Intra-module cohesion quality
+   - Dependency direction appropriateness
+   - Interface design quality
+
+3. **Design Pattern Usage**
+   - Appropriate pattern selection
+   - Pattern implementation quality
+   - Pattern consistency across codebase
+   - Missing beneficial patterns
+```
+
+### 6. Test Coverage Analysis
+**COVERAGE DIMENSIONS**:
+```markdown
+1. **Quantitative Coverage**
+   - Line coverage percentage
+   - Branch coverage percentage
+   - Function coverage percentage
+   - Condition coverage analysis
+
+2. **Qualitative Coverage**
+   - Edge case test coverage
+   - Error condition testing
+   - Integration test completeness
+   - End-to-end scenario coverage
+
+3. **Test Quality Assessment**
+   - Test maintainability
+   - Test readability and documentation
+   - Test execution speed
+   - Test reliability and flakiness
+```
+
+## Analysis Process Workflow
+
+### Phase 1: Preparation
+```markdown
+1. **Scope Definition**
+   - Define analysis objectives
+   - Identify code boundaries
+   - Select appropriate analysis types
+   - Set quality thresholds
+
+2. **Tool Setup**
+   - Configure analysis tools
+   - Set up measurement baselines
+   - Prepare reporting templates
+   - Establish success criteria
+```
+
+### Phase 2: Execution
+```markdown
+1. **Automated Analysis**
+   - Run static analysis tools
+   - Execute performance profiling
+   - Perform security scanning
+   - Generate coverage reports
+
+2. **Manual Review**
+   - Architecture evaluation
+   - Code review for patterns
+   - Security threat modeling
+   - Design decision assessment
+```
+
+### Phase 3: Synthesis
+```markdown
+1. **Results Consolidation**
+   - Aggregate findings from all analysis types
+   - Identify cross-cutting issues
+   - Prioritize issues by impact and effort
+   - Create actionable improvement roadmap
+
+2. **Reporting**
+   - Generate executive summary
+   - Provide detailed technical findings
+   - Include risk assessment
+   - Present improvement recommendations
+```
+
+## Analysis Report Template
+
+### Executive Summary
+```markdown
+# Code Analysis Report
+
+## Overview
+- **Analysis Scope**: [What was analyzed]
+- **Analysis Date**: [When analysis was performed]
+- **Key Findings**: [3-5 most important discoveries]
+- **Overall Health Score**: [Rating with justification]
+
+## Critical Issues
+[Issues requiring immediate attention]
+
+## Improvement Opportunities
+[Medium-priority improvements with significant impact]
+
+## Recommendations
+[Prioritized action items with timelines]
+```
+
+### Detailed Findings
+```markdown
+## Quality Metrics
+[Detailed quality assessment results]
+
+## Security Assessment
+[Security vulnerability findings and risk levels]
+
+## Performance Analysis
+[Performance bottlenecks and optimization opportunities]
+
+## Architecture Evaluation
+[Design pattern compliance and architectural recommendations]
+
+## Test Coverage Report
+[Coverage statistics and quality assessment]
+```
+
+### Action Plan
+```markdown
+## High Priority (Immediate Action Required)
+- [Critical security vulnerabilities]
+- [Performance bottlenecks affecting users]
+- [Architecture violations causing instability]
+
+## Medium Priority (Next Sprint/Release)
+- [Code quality improvements]
+- [Test coverage enhancements]
+- [Documentation updates]
+
+## Low Priority (Future Consideration)
+- [Code style consistency]
+- [Performance optimizations]
+- [Refactoring opportunities]
+```
+
+## Quality Assurance
+
+### Analysis Validation
+```markdown
+- Cross-reference findings with multiple tools
+- Validate performance claims with benchmarks
+- Confirm security issues with penetration testing
+- Review architectural recommendations with team
+```
+
+### Continuous Monitoring
+```markdown
+- Establish quality metrics tracking
+- Set up automated analysis in CI/CD pipeline
+- Schedule regular comprehensive reviews
+- Monitor improvement progress over time
+```
+
+## Quality Checklist
+- [ ] Analysis scope clearly defined and appropriate
+- [ ] Multiple analysis dimensions covered
+- [ ] Automated and manual analysis combined
+- [ ] Findings prioritized by impact and effort
+- [ ] Actionable recommendations provided
+- [ ] Risk assessment included
+- [ ] Improvement roadmap created
+- [ ] Results validated and cross-checked
+- [ ] Report accessible to relevant stakeholders
+- [ ] Follow-up plan established
+
+## References
+@file tools/analysis-configs/
+@rule security-review-standards
+@rule performance-evaluation-criteria
+@rule architecture-assessment-guidelines

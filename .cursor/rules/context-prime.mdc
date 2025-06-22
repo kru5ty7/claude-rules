@@ -1,0 +1,258 @@
+---
+description: Standards for context priming and project understanding initialization
+globs: 
+  - "context-prime.md"
+  - "README.md"
+  - "CLAUDE.md"
+alwaysApply: false
+tags: ["context", "initialization", "workflow"]
+---
+
+# Context Prime Standards
+
+## Overview
+This rule defines the systematic approach for priming Claude with comprehensive project understanding, ensuring consistent and thorough context loading across all interactions.
+
+## Core Principles
+- **Systematic Discovery**: Follow structured information gathering patterns
+- **Comprehensive Coverage**: Capture all relevant project dimensions
+- **Efficient Loading**: Minimize redundant information requests
+- **Contextual Relevance**: Focus on information that impacts development decisions
+
+## Standard Context Loading Protocol
+
+### Phase 1: Project Foundation
+**MUST DO**:
+```markdown
+1. **Project Overview**
+   - Read README.md for project description and setup
+   - Identify project type, purpose, and scope
+   - Note key technologies and dependencies
+   - Understand target audience and use cases
+
+2. **AI-Specific Guidelines**
+   - Read CLAUDE.md for AI instructions and preferences
+   - Load project-specific coding standards
+   - Note collaboration parameters and constraints
+   - Understand development workflow requirements
+```
+
+### Phase 2: Repository Structure Analysis
+**SHOULD DO**:
+```bash
+# Initial structure discovery
+git ls-files | head -50
+
+# Directory structure understanding
+find . -type d -name ".*" -prune -o -type d -print | head -20
+
+# Key file identification
+ls -la | grep -E "\.(json|yaml|yml|toml|lock)$"
+```
+
+**Information to Capture**:
+- Main directories and their purposes
+- Naming conventions and patterns
+- Module organization approach
+- Configuration file locations
+
+### Phase 3: Configuration Review
+**MUST ANALYZE**:
+
+#### Package Management
+```markdown
+- **Node.js**: package.json, package-lock.json
+- **Python**: requirements.txt, pyproject.toml, Pipfile
+- **Rust**: Cargo.toml, Cargo.lock
+- **Ruby**: Gemfile, Gemfile.lock
+- **Go**: go.mod, go.sum
+```
+
+#### Build and Development
+```markdown
+- Build configuration files
+- Environment setup requirements
+- Development vs production differences
+- Tool-specific configurations
+```
+
+### Phase 4: Development Context
+**SHOULD IDENTIFY**:
+
+#### Testing Framework
+```markdown
+- Test directory structure
+- Testing framework and conventions
+- Coverage requirements and tools
+- Test data and fixture patterns
+```
+
+#### CI/CD Configuration
+```markdown
+- Continuous integration setup
+- Deployment workflows
+- Quality gates and checks
+- Environment management
+```
+
+#### Development Workflow
+```markdown
+- Contribution guidelines
+- Code review process
+- Branch naming conventions
+- Commit message standards
+```
+
+## Advanced Context Loading
+
+### Technology-Specific Deep Dive
+When project uses specific technologies:
+
+#### Frontend Frameworks
+```markdown
+- Component architecture patterns
+- State management approach
+- Styling methodology
+- Asset handling strategy
+```
+
+#### Backend Systems
+```markdown
+- API design patterns
+- Database schema and migrations
+- Authentication/authorization approach
+- External service integrations
+```
+
+#### DevOps and Infrastructure
+```markdown
+- Container configuration
+- Infrastructure as code
+- Monitoring and logging setup
+- Security configurations
+```
+
+### Contextual Focus Areas
+Based on project type, emphasize:
+
+#### Library/Framework Projects
+- Public API design
+- Documentation standards
+- Backward compatibility considerations
+- Distribution and packaging
+
+#### Application Projects
+- Feature organization
+- User experience patterns
+- Performance requirements
+- Deployment considerations
+
+#### Tool/CLI Projects
+- Command structure
+- Help system design
+- Configuration management
+- Error handling patterns
+
+## Context Validation Process
+
+### Completeness Check
+**VERIFY**:
+- [ ] Project purpose and scope understood
+- [ ] Technology stack identified
+- [ ] Development workflow documented
+- [ ] Key architectural decisions noted
+- [ ] Testing approach clarified
+- [ ] Deployment process understood
+
+### Accuracy Verification
+```markdown
+1. Cross-reference information from multiple sources
+2. Identify and resolve conflicting information
+3. Confirm understanding with specific questions
+4. Validate assumptions against actual code
+```
+
+## Output Format
+
+### Context Summary Template
+```markdown
+# Project Context Summary
+
+## Overview
+- **Project**: [Name and brief description]
+- **Type**: [Application/Library/Tool/etc.]
+- **Stage**: [Development/Production/Maintenance]
+
+## Technology Stack
+- **Language**: [Primary language and version]
+- **Framework**: [Main framework if applicable]
+- **Database**: [Database technology]
+- **Infrastructure**: [Deployment/hosting approach]
+
+## Architecture
+- **Pattern**: [Architectural approach]
+- **Structure**: [Key organizational principles]
+- **Dependencies**: [Major external dependencies]
+
+## Development Workflow
+- **Testing**: [Framework and approach]
+- **Building**: [Build process and tools]
+- **Deployment**: [Deployment strategy]
+- **Standards**: [Code quality and style requirements]
+
+## Key Constraints
+- [Performance requirements]
+- [Security considerations]
+- [Compatibility requirements]
+- [Resource limitations]
+```
+
+## Context Maintenance
+
+### Incremental Updates
+**WHEN TO UPDATE**:
+- New features or major changes introduced
+- Technology stack modifications
+- Development process changes
+- Architecture refactoring
+
+### Context Refresh Triggers
+```markdown
+- Project structure changes
+- New team members joining
+- Technology upgrades
+- Workflow modifications
+```
+
+## Error Handling
+
+### Missing Information
+```markdown
+- Document what information is unavailable
+- Note assumptions being made
+- Request clarification for critical gaps
+- Proceed with documented limitations
+```
+
+### Conflicting Information
+```markdown
+- Identify source of conflicts
+- Prioritize more recent or authoritative sources
+- Document discrepancies
+- Seek resolution from project maintainers
+```
+
+## Quality Checklist
+- [ ] All standard context areas covered
+- [ ] Technology-specific details captured
+- [ ] Development workflow understood
+- [ ] Key constraints and requirements noted
+- [ ] Context summary generated
+- [ ] Information accuracy verified
+- [ ] Gaps and limitations documented
+
+## References
+@file README.md
+@file CLAUDE.md
+@rule project-analysis-patterns
+@rule technology-stack-identification

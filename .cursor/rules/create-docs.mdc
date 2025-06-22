@@ -1,0 +1,335 @@
+---
+description: Standards for creating comprehensive documentation for components, features, and systems
+globs: 
+  - "create-docs.md"
+  - "docs/**/*.md"
+  - "**/README.md"
+  - "**/*.md"
+alwaysApply: false
+tags: ["documentation", "analysis", "standards"]
+---
+
+# Create Documentation Standards
+
+## Overview
+This rule establishes comprehensive standards for creating high-quality documentation that serves both developers and users, ensuring consistency, completeness, and maintainability.
+
+## Core Principles
+- **User-Centric**: Focus on what users need to know, not what developers want to tell
+- **Comprehensive Coverage**: Address all aspects from overview to implementation details
+- **Actionable Content**: Every section should enable specific actions or decisions
+- **Maintainable Structure**: Organize content for easy updates and extensions
+
+## Documentation Analysis Framework
+
+### Pre-Documentation Analysis
+**MUST ANALYZE**:
+```markdown
+1. **Code Structure and Purpose**
+   - Component/feature architecture
+   - Public interfaces and APIs
+   - Internal implementation patterns
+   - Dependencies and relationships
+
+2. **User Interaction Flows**
+   - Entry points and initialization
+   - Common usage patterns
+   - Advanced configuration options
+   - Error and edge case handling
+
+3. **Integration Points**
+   - External system connections
+   - Internal component interactions
+   - Data flow and transformations
+   - Event handling and callbacks
+```
+
+### Documentation Scope Assessment
+**DETERMINE**:
+- Target audience (end users, developers, maintainers)
+- Documentation type (API, tutorial, reference, guide)
+- Technical depth required
+- Maintenance frequency and ownership
+
+## Standard Documentation Template
+
+### Overview Section
+```markdown
+# Component/Feature Name
+
+## Overview
+[2-3 paragraph description covering:]
+- What this component/feature does
+- Why it exists and what problem it solves
+- How it fits into the larger system
+- Key benefits and value proposition
+```
+
+### Usage Section
+**MUST INCLUDE**:
+```markdown
+## Usage
+
+### Basic Usage
+[Minimal working example with explanation]
+
+### Common Patterns
+[3-5 most frequent usage scenarios]
+
+### Advanced Configuration
+[Complex scenarios and customization options]
+```
+
+### API Documentation
+**FOR COMPONENTS/LIBRARIES**:
+```markdown
+## API Reference
+
+### Props/Parameters
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| prop1 | string | Yes | - | Clear description |
+| prop2 | number | No | 0 | Purpose and constraints |
+
+### Methods/Functions
+#### methodName(param1, param2)
+- **Purpose**: What this method accomplishes
+- **Parameters**: Detailed parameter descriptions
+- **Returns**: Return value type and meaning
+- **Example**: Working code example
+- **Notes**: Important considerations or limitations
+```
+
+### Architecture Documentation
+**FOR SYSTEMS/FEATURES**:
+```markdown
+## Architecture
+
+### Component Hierarchy
+[Visual or textual representation of structure]
+
+### Data Flow
+[How information moves through the system]
+
+### State Management
+[How state is handled, updated, and persisted]
+
+### Dependencies
+[External and internal dependencies with rationale]
+```
+
+### Behavior Documentation
+**MUST COVER**:
+```markdown
+## Behavior
+
+### Expected Behavior
+[Normal operation scenarios with examples]
+
+### Edge Cases
+[Boundary conditions and unusual inputs]
+
+### Error Handling
+[How errors are detected, reported, and recovered]
+
+### Performance Characteristics
+[Performance expectations and limitations]
+```
+
+### Implementation Details
+**FOR DEVELOPER DOCUMENTATION**:
+```markdown
+## Implementation
+
+### Design Decisions
+[Key architectural choices and rationale]
+
+### Code Organization
+[File structure and module organization]
+
+### Extension Points
+[How to extend or customize behavior]
+
+### Internal APIs
+[Private interfaces for maintainers]
+```
+
+## Documentation Types and Standards
+
+### API Documentation
+**REQUIREMENTS**:
+- Complete parameter documentation with types
+- Return value specifications
+- Error condition descriptions
+- Working code examples for all public methods
+- Version compatibility information
+
+**EXAMPLE**:
+```markdown
+### authenticate(credentials, options?)
+Authenticates a user with the provided credentials.
+
+**Parameters**:
+- `credentials` (object, required)
+  - `username` (string): User identifier
+  - `password` (string): User password
+- `options` (object, optional)
+  - `remember` (boolean, default: false): Persist session
+  - `timeout` (number, default: 30000): Request timeout in ms
+
+**Returns**: Promise<AuthResult>
+- `success` (boolean): Authentication status
+- `token` (string): JWT token if successful
+- `error` (string): Error message if failed
+
+**Example**:
+```javascript
+const result = await authenticate({
+  username: 'user@example.com',
+  password: 'securePassword123'
+}, { remember: true });
+
+if (result.success) {
+  localStorage.setItem('token', result.token);
+}
+```
+
+**Throws**:
+- `AuthenticationError`: Invalid credentials
+- `NetworkError`: Connection timeout or failure
+```
+
+### Tutorial Documentation
+**STRUCTURE**:
+```markdown
+# Tutorial Title
+
+## What You'll Learn
+[Clear learning objectives]
+
+## Prerequisites
+[Required knowledge and setup]
+
+## Step-by-Step Guide
+
+### Step 1: [Action Title]
+[Detailed instructions with code examples]
+[Expected outcome description]
+
+### Step 2: [Next Action]
+[Continue with progressive complexity]
+
+## Common Issues
+[Troubleshooting guide for typical problems]
+
+## Next Steps
+[Links to related tutorials or advanced topics]
+```
+
+### Reference Documentation
+**ORGANIZATION**:
+```markdown
+# Reference Guide
+
+## Quick Reference
+[Essential information at a glance]
+
+## Detailed Reference
+[Comprehensive information organized by category]
+
+## Examples
+[Real-world usage examples]
+
+## Migration Guide
+[Version upgrade information if applicable]
+```
+
+## Quality Standards
+
+### Content Quality
+**MUST HAVE**:
+- Clear, concise language
+- Logical information flow
+- Comprehensive coverage of functionality
+- Accurate and tested examples
+- Regular accuracy validation
+
+### Technical Accuracy
+**VERIFY**:
+- All code examples execute successfully
+- API documentation matches implementation
+- Version information is current
+- Links and references are valid
+- Screenshots and diagrams are up-to-date
+
+### User Experience
+**ENSURE**:
+- Information is discoverable and searchable
+- Progressive disclosure from basic to advanced
+- Clear navigation and cross-references
+- Consistent formatting and style
+- Accessible content structure
+
+## Documentation Maintenance
+
+### Update Triggers
+**WHEN TO UPDATE**:
+- API changes or additions
+- Behavior modifications
+- New features or capabilities
+- Bug fixes that affect usage
+- Performance improvements
+- Security updates
+
+### Review Process
+```markdown
+1. **Technical Review**: Verify accuracy and completeness
+2. **User Testing**: Validate documentation with actual users
+3. **Editorial Review**: Check language and clarity
+4. **Integration Testing**: Ensure examples work as documented
+```
+
+### Versioning Strategy
+```markdown
+- Document version compatibility
+- Maintain migration guides
+- Archive deprecated information
+- Provide update notifications
+```
+
+## Accessibility Standards
+
+### Content Structure
+**REQUIREMENTS**:
+- Proper heading hierarchy (H1, H2, H3...)
+- Descriptive link text
+- Alt text for images and diagrams
+- Table headers and captions
+- Consistent navigation structure
+
+### Format Considerations
+```markdown
+- High contrast text and backgrounds
+- Scalable fonts and layout
+- Keyboard navigation support
+- Screen reader compatibility
+- Multi-format availability (HTML, PDF, etc.)
+```
+
+## Quality Checklist
+- [ ] Clear overview explaining purpose and value
+- [ ] Complete usage examples from basic to advanced
+- [ ] Comprehensive API documentation with examples
+- [ ] Architecture and integration information
+- [ ] Error handling and troubleshooting guidance
+- [ ] Performance and security considerations
+- [ ] Maintenance and update procedures
+- [ ] Accessibility compliance verified
+- [ ] Content accuracy validated
+- [ ] User feedback incorporated
+
+## References
+@file docs/template-examples/
+@rule api-documentation-standards
+@rule technical-writing-guidelines
+@rule accessibility-requirements

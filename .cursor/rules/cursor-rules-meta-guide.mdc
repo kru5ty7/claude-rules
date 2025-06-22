@@ -1,0 +1,136 @@
+---
+description: Guidelines for creating and maintaining Cursor rules to ensure consistency and effectiveness
+globs: 
+  - ".cursor/rules/*.mdc"
+  - "cursor-rules-meta-guide.md"
+alwaysApply: true
+---
+
+# Cursor Rules Meta Guide
+
+## Core Principles
+- **Clarity Over Cleverness**: Rules should be immediately understandable
+- **Actionable Instructions**: Every rule must provide specific, implementable guidance
+- **Consistency**: Follow established patterns and formatting
+- **Maintainability**: Rules should be easy to update and extend
+
+## Required Rule Structure
+
+### YAML Frontmatter
+```yaml
+---
+description: Clear, one-line description of what the rule enforces
+globs: 
+  - "path/to/files/*.ext"
+  - "other/path/**/*"
+alwaysApply: boolean
+priority: number (optional)
+tags: ["category", "type"] (optional)
+---
+```
+
+### Content Structure
+```markdown
+# Rule Title
+
+## Overview
+[High-level context and purpose]
+
+## Core Principles
+- [Fundamental concepts]
+- [Guiding philosophy]
+
+## Guidelines
+
+### MUST DO
+- [Critical requirements]
+- [Non-negotiable standards]
+
+### SHOULD DO
+- [Best practices]
+- [Preferred approaches]
+
+### AVOID
+- [Anti-patterns]
+- [Common mistakes]
+
+## Code Patterns
+[Specific implementation examples]
+
+## References
+- @file path/to/template.ext
+- @rule related-rule-name
+```
+
+## File References
+- Use `@file path/to/file` to reference code templates
+- Use `@rule rule-name` to reference other rules
+- Use `[filename](mdc:path/to/file)` for clickable references in IDEs
+
+## Code Examples Format
+```language
+// ✅ DO: Show good examples
+const goodExample = true;
+
+// ❌ DON'T: Show anti-patterns
+const badExample = false;
+```
+
+## Rule Content Guidelines
+
+### Writing Style
+- Start with high-level overview
+- Use bullet points for clarity
+- Include both positive and negative examples
+- Keep descriptions concise but comprehensive
+- Use consistent formatting across rules
+
+### Technical Depth
+- Include specific, actionable requirements
+- Show examples of correct implementation
+- Reference existing code when possible
+- Cover edge cases and error scenarios
+- Provide testing requirements
+
+### Organization
+- Group related concepts together
+- Use clear section headers
+- Cross-reference related rules
+- Keep rules DRY by referencing common patterns
+
+## Rule Types and Patterns
+
+### Always Applied Rules
+- Project context and standards
+- Universal coding principles
+- Security requirements
+- Performance guidelines
+
+### Auto-Attached Rules
+- Language-specific patterns
+- File-type conventions
+- Framework standards
+- Tool configurations
+
+### Contextual Rules
+- Feature-specific patterns
+- Domain-specific requirements
+- Conditional guidelines
+- Specialized workflows
+
+## Maintenance Best Practices
+- Update rules when new patterns emerge
+- Add examples from actual codebase
+- Remove outdated patterns
+- Cross-reference related rules
+- Regular review and consolidation
+
+## Quality Checklist
+- [ ] Clear, actionable description
+- [ ] Proper YAML frontmatter
+- [ ] Consistent formatting
+- [ ] Code examples included
+- [ ] References to related rules/files
+- [ ] Both positive and negative examples
+- [ ] Testing requirements specified
+- [ ] Security considerations addressed
